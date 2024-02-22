@@ -1,42 +1,182 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+h2, h4 {
+  text-align: center;
+  padding: 15px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 15px;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 25px;
+
+}
+
+nav ul li a {
+  color: var(--Rosa-Incor);
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.SpanLogo img {
+  width: 210px;
+}
+
+.red {
+  color: rgb(255,0,0);
+}
+
+.TopMenu {
+  display: flex;
+}
+
+.DivBody {
+  margin: 5px;
+}
+
+.Card  {
+  background-color: var(--Rosa-Incor);
+  padding: 10px 5px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.Dominios {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  height: 100px;
+  margin-top: 20px;
+  border: 1px solid;
+  border-radius: 15px;
+}
+
+.Pergunta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40%;
+  padding-left: 10px;
+}
+
+.Escala {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 60%;
+}
+
+.Escala div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+}
+.Escala div p {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.SpanCard {
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.DivResults {
+  display: flex;
+  background-color: white;
+  margin-top: 10px;
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 10px;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.SaveButton {
+  background-color: var(--Rosa-Incor);
+  color: white;
+  border: none;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 25px;
 }
 
-.card {
-  padding: 2em;
+.Pontos {
+  display: flex;
+  border: 1px solid;
+  height: 150px;
+  width: 20%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.read-the-docs {
-  color: #888;
+.Graficos {
+  display: flex;
+  width: 75%;
+  border: 1px solid;
+}
+
+.ResultTextInput {
+  height: 36px;
+  font-size: 22px;
+  padding-left: 5px;
+  width: 450px;
+  border: none;
+  border-bottom: 1px solid;
+}
+
+footer {
+
+  background-color: black;
+  color: white;
+  display: flex;
+  height: 45%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.frase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social {
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.social a i {
+  color: white;
+  font-size: 25px;
+}
+
+footer p {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.Health {
+  color: rgb(39 150 115);
+}
+
+.Tec {
+  color: rgb(0 74 173);
 }
