@@ -1,26 +1,79 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Logo from './assets/LogoNome.png'
 import './App.css'
 
 function App() {
-  const [Question01, SetQuestion01] = useState(null)
-  const [Question02, SetQuestion02] = useState(null)
-  const [Question03, SetQuestion03] = useState(null)
-  const [Question04, SetQuestion04] = useState(null)
-  const [Question05, SetQuestion05] = useState(null)
-  const [Question06, SetQuestion06] = useState('____')
-  const [Question07, SetQuestion07] = useState(null)
-  const [Question08, SetQuestion08] = useState('____')
-  const [Question09, SetQuestion09] = useState(null)
-  const [Question10, SetQuestion10] = useState(null)
-  const [Question11, SetQuestion11] = useState(null)
-  const [Question12, SetQuestion12] = useState(null)
-  const [Question13, SetQuestion13] = useState(null)
-  const [Question14, SetQuestion14] = useState(null)
+  const [Question01, SetQuestion01] = useState(0)
+  const [Question02, SetQuestion02] = useState(0)
+  const [Question03, SetQuestion03] = useState(0)
+  const [Question04, SetQuestion04] = useState(0)
+  const [Question05, SetQuestion05] = useState(0)
+  const [CtrlQuestion06, SetCtrlQuestion06] = useState('____')
+  const [Question06, SetQuestion06] = useState(0)
+  const [CtrlQuestion07, SetCtrlQuestion07] = useState('')
+  const [Question07, SetQuestion07] = useState(0)
+  const [CtrlQuestion08, SetCtrlQuestion08] = useState('____')
+  const [Question08, SetQuestion08] = useState(0)
+  const [Question09, SetQuestion09] = useState(0)
+  const [Question10, SetQuestion10] = useState(0)
+  const [Question11, SetQuestion11] = useState(0)
+  const [Question12, SetQuestion12] = useState(0)
+  const [Question13, SetQuestion13] = useState(0)
+  const [Question14, SetQuestion14] = useState(0)
 
   const [StrName, SetStrName] = useState('')
   const [StrDate, SetStrDate] = useState('')
+
+  const [NumTotal, SetNumTotal] = useState(0)
+  const [NumTotalAtvFis, SetNumTotalAtvFis] = useState(0)
+  const [NumTotalNut, SetNumTotalNut] = useState(0)
+  const [NumTotalAlCo, SetNumTotalAlCo] = useState(0)
+  const [NumTotalSn, SetNumTotalSn] = useState(0)
+  const [NumTotalEs, SetNumTotalEs] = useState(0)
+  const [NumTotalRe, SetNumTotalRe] = useState(0)
+
+  /**Total */
+  useEffect(() => {
+    let total = Number(Question01) + Number(Question02) + Number(Question03) + Number(Question04) + Number(Question05) + Number(Question06) + Number(Question07) + Number(Question08) + Number(Question09) + Number(Question10) + Number(Question11) + Number(Question12) + Number(Question13) + Number(Question14);
+    SetNumTotal(total);
+  }, [Question01, Question02, Question03, Question04, Question05, Question06, Question07, Question08, Question09, Question10, Question11, Question12, Question13, Question14]);
+
+  /**Atividade Física */
+  useEffect(() => {
+    let total = Number(Question01) + Number(Question02) + Number(Question03);
+    SetNumTotalAtvFis(total);
+  }, [Question01, Question02, Question03]);
+
+  /**Nutrição */
+  useEffect(() => {
+    let total = Number(Question04) + Number(Question05) + Number(Question06);
+    SetNumTotalNut(total);
+  }, [Question04, Question05, Question06]);
+
+  /**Álcool e Tabaco */
+  useEffect(() => {
+    let total = Number(Question07) + Number(Question08);
+    SetNumTotalAlCo(total);
+  }, [Question07, Question08]);
+
+  /**Sono */
+  useEffect(() => {
+    let total = Number(Question09) + Number(Question10);
+    SetNumTotalSn(total);
+  }, [Question09, Question10])
+
+  /**Estresse */
+  useEffect(() => {
+    let total = Number(Question11) + Number(Question12);
+    SetNumTotalEs(total);
+  }, [Question11, Question12]);
+
+  /**Relacionamentos */
+  useEffect(() => {
+    let total = Number(Question13) + Number(Question14);
+    SetNumTotalRe(total);
+  }, [Question13, Question14]);
 
   return (
     <>
@@ -41,7 +94,7 @@ function App() {
       <div id='Avaliacao' className='DivBody' >
         <div className='EstiloDeVida'>
           <h2>Questionario de Avaliação do Estilo de Vida para Adultos com Doenças Cardiovasculares</h2>
-          <span><h4><span>Instruções:</span> Selecionea alternativa que melhor descreve o seu comportamento ou situação no último mês.</h4></span>
+          <span><h4><span>Instruções:</span> Selecione a alternativa que melhor descreve o seu comportamento ou situação no último mês.</h4></span>
 
           {/*Atividade Física*/}
           {/*Pergunta 1*/}
@@ -333,7 +386,7 @@ function App() {
             {/*Pergunta 6*/}
             <div className='Dominios'>
               <div className='Pergunta'>
-                <p>Preciso perder ou ganhar <span>{Question06}</span> quilos para me aproximar do peso que considero saudável.</p>
+                <p>Preciso perder ou ganhar <span>{CtrlQuestion06}</span> quilos para me aproximar do peso que considero saudável.</p>
                 <p></p>
               </div>
 
@@ -343,8 +396,8 @@ function App() {
                   <input
                     type="radio"
                     value='Mais de 8Kg'
-                    checked={Question06 === 'Mais de 8Kg'}
-                    onChange={() => { SetQuestion06('Mais de 8Kg') }}
+                    checked={CtrlQuestion06 === 'Mais de 8Kg'}
+                    onChange={() => { SetCtrlQuestion06('Mais de 8Kg'); SetQuestion06(0) }}
                   />
                 </div>
                 <div>
@@ -352,8 +405,8 @@ function App() {
                   <input
                     type="radio"
                     value='6 - 8 Kg'
-                    checked={Question06 === '6 - 8 Kg'}
-                    onChange={() => { SetQuestion06('6 - 8 Kg') }}
+                    checked={CtrlQuestion06 === '6 - 8 Kg'}
+                    onChange={() => { SetCtrlQuestion06('6 - 8 Kg'); SetQuestion06(1) }}
                   />
                 </div>
                 <div>
@@ -361,8 +414,8 @@ function App() {
                   <input
                     type="radio"
                     value='4 - 6 Kg'
-                    checked={Question06 === '4 - 6 Kg'}
-                    onChange={() => { SetQuestion06('4 - 6 Kg') }}
+                    checked={CtrlQuestion06 === '4 - 6 Kg'}
+                    onChange={() => { SetCtrlQuestion06('4 - 6 Kg'); SetQuestion06(2) }}
                   />
                 </div>
                 <div>
@@ -370,8 +423,8 @@ function App() {
                   <input
                     type="radio"
                     value='2 - 4 Kg'
-                    checked={Question06 === '2 - 4 Kg'}
-                    onChange={() => { SetQuestion06('2 - 4 Kg') }}
+                    checked={CtrlQuestion06 === '2 - 4 Kg'}
+                    onChange={() => { SetCtrlQuestion06('2 - 4 Kg'); SetQuestion06(3) }}
                   />
                 </div>
                 <div>
@@ -379,8 +432,8 @@ function App() {
                   <input
                     type="radio"
                     value='0 - 2 Kg'
-                    checked={Question06 === '0 - 2 Kg'}
-                    onChange={() => { SetQuestion06('0 - 2 Kg') }}
+                    checked={CtrlQuestion06 === '0 - 2 Kg'}
+                    onChange={() => { SetCtrlQuestion06('0 - 2 Kg'); SetQuestion06(4) }}
                   />
                 </div>
               </div>
@@ -388,9 +441,10 @@ function App() {
           </div>
 
           {/*Alcool e Tabaco*/}
-          {/*Pergunta 7*/}
           <div className='Card'>
             <h2 style={{ color: "white" }}>Alcool e Tabaco</h2>
+
+            {/*Pergunta 7*/}
             <div className='Dominios'>
               <div className='Pergunta'>
                 <p>Eu fumo cigarros, dispositivos eletrônicos com nicotina ou narguilé.</p>
@@ -403,8 +457,8 @@ function App() {
                   <input
                     type="radio"
                     value='Mais de 10 por dia'
-                    checked={Question07 === 'Mais de 10 por dia'}
-                    onChange={() => { SetQuestion07('Mais de 10 por dia') }}
+                    checked={CtrlQuestion07 === 'Mais de 10 por dia'}
+                    onChange={() => { SetCtrlQuestion07('Mais de 10 por dia'); SetQuestion07(0) }}
                   />
                 </div>
                 <div>
@@ -412,8 +466,8 @@ function App() {
                   <input
                     type="radio"
                     value='1 a 10 por dia'
-                    checked={Question07 === '1 a 10 por dia'}
-                    onChange={() => { SetQuestion07('1 a 10 por dia') }}
+                    checked={CtrlQuestion07 === '1 a 10 por dia'}
+                    onChange={() => { SetCtrlQuestion07('1 a 10 por dia'); SetQuestion07(1) }}
                   />
                 </div>
                 <div>
@@ -421,17 +475,17 @@ function App() {
                   <input
                     type="radio"
                     value='Nenhum nos ultimos 6 meses'
-                    checked={Question07 === 'Nenhum nos ultimos 6 meses'}
-                    onChange={() => { SetQuestion07('Nenhum nos ultimos 6 meses') }}
+                    checked={CtrlQuestion07 === 'Nenhum nos ultimos 6 meses'}
+                    onChange={() => { SetCtrlQuestion07('Nenhum nos ultimos 6 meses'); SetQuestion07(2) }}
                   />
                 </div>
                 <div>
                   <p>Nenhum no último ano</p>
                   <input
                     type="radio"
-                    value='Nenhum nos ultimos 6 meses'
-                    checked={Question07 === 'Nenhum nos ultimos 6 meses'}
-                    onChange={() => { SetQuestion07('Nenhum nos ultimos 6 meses') }}
+                    value='Nenhum no último ano'
+                    checked={CtrlQuestion07 === 'Nenhum no último ano'}
+                    onChange={() => { SetCtrlQuestion07('Nenhum no último ano'); SetQuestion07(3) }}
                   />
                 </div>
                 <div>
@@ -439,8 +493,8 @@ function App() {
                   <input
                     type="radio"
                     value='Nenhum nos últimos 5 anos ou mais'
-                    checked={Question07 === 'Nenhum nos últimos 5 anos ou mais'}
-                    onChange={() => { SetQuestion07('Nenhum nos últimos 5 anos ou mais') }}
+                    checked={CtrlQuestion07 === 'Nenhum nos últimos 5 anos ou mais'}
+                    onChange={() => { SetCtrlQuestion07('Nenhum nos últimos 5 anos ou mais'); SetQuestion07(4) }}
                   />
                 </div>
               </div>
@@ -449,7 +503,7 @@ function App() {
             {/*Pergunta 8*/}
             <div className='Dominios'>
               <div className='Pergunta'>
-                <p>A minha ingestão média por semanda de álcool é: <span>{Question08}</span> doses.</p>
+                <p>A minha ingestão média por semanda de álcool é: <span>{CtrlQuestion08}</span> doses.</p>
                 <p>Ex.: 1 dose = 1 lata de cerveja ou 1 taça de vinho (142ml) ou 1 dose de destilado (42ml).</p>
               </div>
 
@@ -459,8 +513,8 @@ function App() {
                   <input
                     type="radio"
                     value='Mais de 20'
-                    checked={Question08 === 'Mais de 20'}
-                    onChange={() => { SetQuestion08('Mais de 20') }}
+                    checked={CtrlQuestion08 === 'Mais de 20'}
+                    onChange={() => { SetCtrlQuestion08('Mais de 20'); SetQuestion08(0) }}
                   />
                 </div>
                 <div>
@@ -468,8 +522,8 @@ function App() {
                   <input
                     type="radio"
                     value='13 - 20'
-                    checked={Question08 === '13 - 20'}
-                    onChange={() => { SetQuestion08('13 - 20') }}
+                    checked={CtrlQuestion08 === '13 - 20'}
+                    onChange={() => { SetCtrlQuestion08('13 - 20'); SetQuestion08(1) }}
                   />
                 </div>
                 <div>
@@ -477,8 +531,8 @@ function App() {
                   <input
                     type="radio"
                     value='11 - 12'
-                    checked={Question08 === '11 - 12'}
-                    onChange={() => { SetQuestion08('11 - 12') }}
+                    checked={CtrlQuestion08 === '11 - 12'}
+                    onChange={() => { SetCtrlQuestion08('11 - 12'); SetQuestion08(2) }}
                   />
                 </div>
                 <div>
@@ -486,8 +540,8 @@ function App() {
                   <input
                     type="radio"
                     value='8 - 10'
-                    checked={Question08 === '8 - 10'}
-                    onChange={() => { SetQuestion08('8 - 10') }}
+                    checked={CtrlQuestion08 === '8 - 10'}
+                    onChange={() => { SetCtrlQuestion08('8 - 10'); SetQuestion08(3) }}
                   />
                 </div>
                 <div>
@@ -495,8 +549,8 @@ function App() {
                   <input
                     type="radio"
                     value='0 - 7'
-                    checked={Question08 === '0 - 7'}
-                    onChange={() => { SetQuestion08('0 - 7') }}
+                    checked={CtrlQuestion08 === '0 - 7'}
+                    onChange={() => { SetCtrlQuestion08('0 - 7'); SetQuestion08(4) }}
                   />
                 </div>
               </div>
@@ -860,11 +914,11 @@ function App() {
               <div className='DivResults'>
                 <span>
                   <p>Nome:</p>
-                  <input type="text" value={StrName} onChange={(e) => { SetStrName(e.target.value) }} className='ResultTextInput'/>
+                  <input type="text" value={StrName} onChange={(e) => { SetStrName(e.target.value) }} className='ResultTextInput' />
                 </span>
                 <span>
                   <p>Data:</p>
-                  <input type="date" value={StrDate} onChange={(e) => { SetStrDate(e.target.value) }} className='ResultTextInput'/>
+                  <input type="date" value={StrDate} onChange={(e) => { SetStrDate(e.target.value) }} className='ResultTextInput' />
                 </span>
                 <span>
                   <button className='SaveButton'>Salvar</button>
@@ -874,19 +928,19 @@ function App() {
                 <div className='Pontos'>
                   <h3>Estilo de Vida</h3>
                   <p>Máximo: 56</p>
-                  <p>Paciente: <span>Total</span></p>
+                  <p>Paciente: <span>{NumTotal}</span></p>
                 </div>
                 <div className='Graficos'>Grafico</div>
               </div>
               <div className='DivResults'>
                 <div className='Pontos'>
                   <h3>Pontuação</h3>
-                  <p>Atividade Física: <span>0</span>/12</p>
-                  <p>Nutrição: <span>0</span>/12</p>
-                  <p>Álcool e Tabaco: <span>0</span>/8</p>
-                  <p>Sono: <span>0</span>/8</p>
-                  <p>Estresse: <span>0</span>/8</p>
-                  <p>Relacionamentos: <span>0</span>/8</p>
+                  <p>Atividade Física: <span>{NumTotalAtvFis}</span>/12</p>
+                  <p>Nutrição: <span>{NumTotalNut}</span>/12</p>
+                  <p>Álcool e Tabaco: <span>{NumTotalAlCo}</span>/8</p>
+                  <p>Sono: <span>{NumTotalSn}</span>/8</p>
+                  <p>Estresse: <span>{NumTotalEs}</span>/8</p>
+                  <p>Relacionamentos: <span>{NumTotalRe}</span>/8</p>
                 </div>
                 <div className='Graficos'>Grafico</div>
               </div>
