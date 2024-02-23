@@ -1,11 +1,12 @@
 import jsPDF from "jspdf";
+import Logo from './assets/LogoNome.png'
 
 export default async (name, data, img1, img2, TotalArray) => {
     // Create a new jsPDF instance
     const pdfDoc = new jsPDF({ orientation: 'landscape' });
 
     //addImage(imageData, format, x, y, width, height, alias, compression, rotation)
-    pdfDoc.addImage('./src/assets/LogoNome.png', 'PNG', 10, 0, 30, 30);
+    pdfDoc.addImage(Logo, 'PNG', 10, 0, 30, 30);
 
     pdfDoc.setFont('helvetica', 'bold');
     pdfDoc.setFontSize(16);
