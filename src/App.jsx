@@ -1,4 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
+import html2canvas from 'html2canvas';
+
+import Relatorio from './Relatorio';
+
+import RechartsComponent from './Grafico';
 
 import Logo from './assets/LogoNome.png'
 import './App.css'
@@ -22,7 +28,7 @@ function App() {
   const [Question13, SetQuestion13] = useState(0)
   const [Question14, SetQuestion14] = useState(0)
 
-  const [StrName, SetStrName] = useState('')
+  const [StrName, SetStrName] = useState('Bruno Camargo Souza')
   const [StrDate, SetStrDate] = useState('')
 
   const [NumTotal, SetNumTotal] = useState(0)
@@ -32,6 +38,8 @@ function App() {
   const [NumTotalSn, SetNumTotalSn] = useState(0)
   const [NumTotalEs, SetNumTotalEs] = useState(0)
   const [NumTotalRe, SetNumTotalRe] = useState(0)
+
+  const [SaveButton, SetSaveButton] = useState(false);
 
   /**Total */
   useEffect(() => {
@@ -74,6 +82,70 @@ function App() {
     let total = Number(Question13) + Number(Question14);
     SetNumTotalRe(total);
   }, [Question13, Question14]);
+
+  const data = [
+    {
+      name: 'Atividade Física',
+      Max: 12,
+      Paciente: NumTotalAtvFis,
+    },
+    {
+      name: 'Nutrição',
+      Max: 12,
+      Paciente: NumTotalNut,
+    },
+    {
+      name: 'Álcool e Tabaco',
+      Max: 8,
+      Paciente: NumTotalAlCo,
+    },
+    {
+      name: 'Sono',
+      Max: 8,
+      Paciente: NumTotalSn,
+    },
+    {
+      name: 'Estresse',
+      Max: 8,
+      Paciente: NumTotalEs,
+    },
+    {
+      name: 'Relacionamentos',
+      Max: 8,
+      Paciente: NumTotalRe,
+    }
+  ];
+
+  const dataTotal = [
+    {
+      name: "Estilo de Vida",
+      Maximo: 56,
+      Paciente: Number(NumTotal)
+    }
+  ];
+
+  const exportAsImage = async () => {
+    let grafico = document.getElementById('Grafico01')
+    await html2canvas(grafico).then(
+      (canvas) => {
+        sessionStorage.setItem('imagem', canvas.toDataURL('image/png'));
+      }
+    )
+    let grafico2 = document.getElementById('Grafico02')
+    await html2canvas(grafico2).then(
+      (canvas) => {
+        sessionStorage.setItem('imagem2', canvas.toDataURL('image/png'));
+      }
+    )
+  };
+
+  const CallRelatorio = async () => {
+    await exportAsImage();
+    var img1 = sessionStorage.getItem('imagem');
+    var img2 = sessionStorage.getItem('imagem2');
+    let TotalArray = [NumTotal, NumTotalAtvFis, NumTotalNut, NumTotalAlCo, NumTotalSn, NumTotalEs, NumTotalRe,]
+    Relatorio(StrName, StrDate, img1, img2, TotalArray);    
+  }
 
   return (
     <>
@@ -921,17 +993,36 @@ function App() {
                   <input type="date" value={StrDate} onChange={(e) => { SetStrDate(e.target.value) }} className='ResultTextInput' />
                 </span>
                 <span>
-                  <button className='SaveButton'>Salvar</button>
+                  <button className={SaveButton ? 'SaveButtonDisable' : 'SaveButton'} disabled={SaveButton} onClick={() => { CallRelatorio(); SetSaveButton(true); }}>Salvar</button>
                 </span>
               </div>
+
               <div className='DivResults'>
                 <div className='Pontos'>
                   <h3>Estilo de Vida</h3>
                   <p>Máximo: 56</p>
                   <p>Paciente: <span>{NumTotal}</span></p>
                 </div>
-                <div className='Graficos'>Grafico</div>
+                <div id='Grafico01' className='Graficos'>
+                  <BarChart width={750} height={300} data={dataTotal}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis domain={[0, 60]} interval={'preserveEnd'} />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="Maximo" fill="rgb(138, 3, 3)" activeBar={<Rectangle />} />
+                    <Bar dataKey="Paciente" fill="rgb(71, 74, 81)" activeBar={<Rectangle />} />
+                  </BarChart>
+                </div>
               </div>
+
               <div className='DivResults'>
                 <div className='Pontos'>
                   <h3>Pontuação</h3>
@@ -942,7 +1033,29 @@ function App() {
                   <p>Estresse: <span>{NumTotalEs}</span>/8</p>
                   <p>Relacionamentos: <span>{NumTotalRe}</span>/8</p>
                 </div>
-                <div className='Graficos'>Grafico</div>
+
+                <div id='Grafico02' className='Graficos'>
+                  <BarChart
+                    width={750}
+                    height={300}
+                    data={data}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis domain={[0, 15]} interval={'preserveEnd'} />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="Max" fill="rgb(138, 3, 3)" activeBar={<Rectangle />} />
+                    <Bar dataKey="Paciente" fill="rgb(71, 74, 81)" activeBar={<Rectangle />} />
+                  </BarChart>
+                </div>
+
               </div>
             </span>
           </div>
