@@ -28,7 +28,7 @@ function App() {
   const [Question13, SetQuestion13] = useState(0)
   const [Question14, SetQuestion14] = useState(0)
 
-  const [StrName, SetStrName] = useState('Bruno Camargo Souza')
+  const [StrName, SetStrName] = useState('')
   const [StrDate, SetStrDate] = useState('')
 
   const [NumTotal, SetNumTotal] = useState(0)
