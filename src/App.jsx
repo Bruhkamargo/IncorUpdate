@@ -163,7 +163,7 @@ function App() {
 
       <div id='Avaliacao' className='DivBody' >
         <div className='EstiloDeVida'>
-          <h2>Questionario de Avaliação do Estilo de Vida para Adultos com Doenças Cardiovasculares</h2>
+          <h2>Questionário de Avaliação do Estilo de Vida para Adultos com Doenças Cardiovasculares</h2>
           <span><h4><span>Instruções:</span> Selecione a alternativa que melhor descreve o seu comportamento ou situação no último mês.</h4></span>
 
           {/*Atividade Física*/}
@@ -172,7 +172,7 @@ function App() {
             <h2 style={{ color: "white" }}>Atividade Física</h2>
             <div className='Dominios'>
               <div className='Pergunta'>
-                <p>Pratico mais de 150 minutos de atividade fisica moderada a vigorosa por semana.</p>
+                <p>Pratico mais de 150 minutos de atividade física moderada a vigorosa por semana.</p>
                 <p>Ex.: Andar rapidamente, correr, dançar, nadar, pedalar, entre outras atividade de intensidade equivalente.</p>
               </div>
 
@@ -228,7 +228,7 @@ function App() {
             {/*Pergunta 2*/}
             <div className='Dominios'>
               <div className='Pergunta'>
-                <p>Pratico atividades de fortaleciemtno muscular pelo menos 2 dias na semana.</p>
+                <p>Pratico atividades de fortalecimento muscular pelo menos 2 dias na semana.</p>
                 <p>Ex.: Musculação, Treinamento Funcional, Pilates, Entre outras atividade equivalentes.</p>
               </div>
 
@@ -345,7 +345,7 @@ function App() {
             <div className='Dominios'>
               <div className='Pergunta'>
                 <p>Consumo pelo menos 5 porções* de frutas ou legumes e verduras ao dia.</p>
-                <p>*1 porção padrão = aproximadamente 80g ou 1 xicara</p>
+                <p>*1 porção padrão = aproximadamente 80g ou 1 xícara</p>
               </div>
 
               <div className='Escala'>
@@ -510,9 +510,9 @@ function App() {
             </div>
           </div>
 
-          {/*Alcool e Tabaco*/}
+          {/*Álcool e Tabaco*/}
           <div className='Card'>
-            <h2 style={{ color: "white" }}>Alcool e Tabaco</h2>
+            <h2 style={{ color: "white" }}>Álcool e Tabaco</h2>
 
             {/*Pergunta 7*/}
             <div className='Dominios'>
@@ -544,9 +544,9 @@ function App() {
                   <p>Nenhum nos últimos 6 meses</p>
                   <input
                     type="radio"
-                    value='Nenhum nos ultimos 6 meses'
-                    checked={CtrlQuestion07 === 'Nenhum nos ultimos 6 meses'}
-                    onChange={() => { SetCtrlQuestion07('Nenhum nos ultimos 6 meses'); SetQuestion07(2) }}
+                    value='Nenhum nos últimos 6 meses'
+                    checked={CtrlQuestion07 === 'Nenhum nos últimos 6 meses'}
+                    onChange={() => { SetCtrlQuestion07('Nenhum nos últimos 6 meses'); SetQuestion07(2) }}
                   />
                 </div>
                 <div>
@@ -573,7 +573,7 @@ function App() {
             {/*Pergunta 8*/}
             <div className='Dominios'>
               <div className='Pergunta'>
-                <p>A minha ingestão média por semanda de álcool é: <span>{CtrlQuestion08}</span> doses.</p>
+                <p>A minha ingestão média por semana de álcool é: <span>{CtrlQuestion08}</span> doses.</p>
                 <p>Ex.: 1 dose = 1 lata de cerveja ou 1 taça de vinho (142ml) ou 1 dose de destilado (42ml).</p>
               </div>
 

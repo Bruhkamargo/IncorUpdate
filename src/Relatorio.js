@@ -14,7 +14,7 @@ export default async (name, data, img1, img2, TotalArray) => {
     pdfDoc.setFont('helvetica', 'normal');
     pdfDoc.setFontSize(12);
 
-    //text(text, x, y, optionsopt, transform)
+    //text(text, x, y, options, transform)
     pdfDoc.text(`${data}`, 25, 40);
     pdfDoc.text(`Paciente: ${name}`, 100, 40);
 
@@ -52,14 +52,14 @@ export default async (name, data, img1, img2, TotalArray) => {
     pdfDoc.cell(25, 130, 85, 75, ' ');
     pdfDoc.setFont("helvetica", "bold");
     pdfDoc.setFontSize(12);
-    //text(text, x, y, optionsopt, transform)
+    //text(text, x, y, options, transform)
     pdfDoc.text('Pontuações', 55, 137, null, null, "center");
     pdfDoc.text('Atividade Física:', 30, 150);
     pdfDoc.text('Nutrição:', 30, 160);
     pdfDoc.text('Álcool e Tabaco:', 30, 170);
     pdfDoc.text('Sono:', 30, 180);
     pdfDoc.text('Estresse:', 30, 190);
-    pdfDoc.text('Relaciomentos:', 30, 200);
+    pdfDoc.text('Relacionamentos:', 30, 200);
     pdfDoc.setFont("helvetica", "normal");
     pdfDoc.text(`${TotalArray[1]} | 12`, 65, 150);
 
