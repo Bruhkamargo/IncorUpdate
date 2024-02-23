@@ -113,28 +113,12 @@ nav ul li a {
   height: 50px;
   font-size: 20px;
   border-radius: 25px;
-  box-shadow: 5px 5px 5px black;
 }
 
-.SaveButton:active {
-  box-shadow: none;
-}
-
-.SaveButtonDisable {  
-  background-color: slategrey;
-  color: white;
-  border: none;
-  width: 150px;
-  height: 50px;
-  font-size: 20px;
-  border-radius: 25px;
-}
-.SaveButtonDisable:hover {
-  cursor: default;
-}
 .Pontos {
   display: flex;
   border: 1px solid;
+  height: 150px;
   width: 20%;
   flex-direction: column;
   justify-content: space-around;
@@ -143,7 +127,6 @@ nav ul li a {
 
 .Graficos {
   display: flex;
-  justify-content: center;
   width: 75%;
   border: 1px solid;
 }
@@ -162,7 +145,7 @@ footer {
   background-color: black;
   color: white;
   display: flex;
-  height: 35%;
+  height: 45%;
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
