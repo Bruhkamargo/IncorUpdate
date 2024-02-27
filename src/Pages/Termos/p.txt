@@ -1,0 +1,73 @@
+<p>Termos de Uso e Política de Privacidade - [Nome do Seu Site]
+
+                    Última Atualização: [Inserir Data]
+
+                    Bem-vindo ao [Nome do Seu Site]!
+
+                    Ao acessar e utilizar este site, você concorda em cumprir e ficar vinculado aos seguintes termos e condições de uso. Se você não concordar com qualquer parte destes termos, por favor, não use nosso site.
+
+                    1. Uso do Site:
+
+                    Você concorda em usar este site apenas para fins legais e de acordo com todas as leis aplicáveis.
+                    Você não deve interferir ou tentar interferir na segurança do site, acessar dados não destinados a você ou tentar entrar em áreas restritas do site.
+                    2. Conteúdo do Usuário:
+
+                    Ao enviar conteúdo para o site, você concede a [Nome da Sua Empresa] uma licença mundial, não exclusiva, irrevogável, transferível e gratuita para usar, reproduzir, modificar, adaptar, distribuir e exibir esse conteúdo.
+                    3. Propriedade Intelectual:
+
+                    Todo o conteúdo e materiais disponíveis neste site, incluindo, mas não se limitando a textos, gráficos, logotipos, ícones, imagens, áudio e vídeo, são propriedade exclusiva de [Nome da Sua Empresa] ou de seus licenciadores.
+                    4. Links para Outros Sites:
+
+                    Nosso site pode conter links para sites de terceiros que não são controlados por [Nome da Sua Empresa]. Não nos responsabilizamos pelo conteúdo, políticas de privacidade ou práticas desses sites.
+                    5. Coleta e Uso de Informações Pessoais:
+
+                    5.1 Consentimento:
+                    Ao se inscrever em nossa newsletter ou fornecer suas informações de contato, você consente expressamente com a coleta e o uso de seu nome, e-mail e telefone para os seguintes fins:
+                    Recebimento de newsletters periódicas.
+                    Contato para fins informativos relacionados ao nosso conteúdo.
+                    5.2 Proteção de Dados e Privacidade:
+                    Levamos a sério a proteção de suas informações pessoais. Seus dados serão armazenados de forma segura e não serão compartilhados, vendidos ou alugados a terceiros sem o seu consentimento expresso.
+                    5.3 Cancelamento de Assinatura:
+                    Você tem o direito de cancelar sua assinatura a qualquer momento. Cada e-mail de newsletter incluirá um link fácil para cancelamento de assinatura.
+                    5.4 Segurança:
+                    Implementamos medidas de segurança para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição não autorizada.
+                    5.5 Consentimento:
+                    Ao fornecer suas informações, você consente com a coleta e uso conforme estabelecido nestes Termos de Uso.
+                    5.6 Menores de Idade:
+                    Este site não é destinado a menores de 16 anos, e não coletamos intencionalmente informações pessoais de indivíduos nessa faixa etária.
+                    6. Cookies:
+
+                    Este site pode utilizar cookies para melhorar a experiência do usuário. Ao continuar a usar o site, você concorda com o uso de cookies.
+                    7. Modificações nos Termos:
+
+                    Reservamos o direito de modificar estes Termos de Uso e Política de Privacidade a qualquer momento, e tais modificações serão efetivas imediatamente após a publicação. Ao continuar a usar o site após tais modificações, você aceita os Termos de Uso atualizados.
+                    8. Lei Aplicável:
+
+                    Estes Termos de Uso e Política de Privacidade são regidos e interpretados de acordo com as leis do [Inserir Jurisdição], e você consente com a jurisdição exclusiva dos tribunais dessa jurisdição.
+                    Se você tiver alguma dúvida sobre estes Termos de Uso e Política de Privacidade, entre em contato conosco em [Inserir Endereço de Contato].Termos de Uso - Coleta de Informações Pessoais para Newsletter
+
+                    9. Coleta e Uso de Informações Pessoais:
+
+                    Ao se inscrever em nossa newsletter ou fornecer suas informações de contato, você concorda expressamente com a coleta e o uso de seu nome, e-mail e telefone para os seguintes fins:
+                    Recebimento de newsletters periódicas.
+                    Contato para fins informativos relacionados ao nosso conteúdo.
+                    10. Proteção de Dados e Privacidade:
+
+                    Levamos a sério a proteção de suas informações pessoais. Seus dados serão armazenados de forma segura e não serão compartilhados, vendidos ou alugados a terceiros sem o seu consentimento expresso.
+                    11. Cancelamento de Assinatura:
+
+                    Você tem o direito de cancelar sua assinatura a qualquer momento. Cada e-mail de newsletter incluirá um link fácil para cancelamento de assinatura.
+                    12. Segurança:
+
+                    Implementamos medidas de segurança para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição não autorizada.
+                    13. Consentimento:
+
+                    Ao fornecer suas informações, você consente com a coleta e uso conforme estabelecido nestes Termos de Uso.
+                    14. Menores de Idade:
+
+                    Este site não é destinado a menores de 16 anos, e não coletamos intencionalmente informações pessoais de indivíduos nessa faixa etária.
+                    Ao continuar a usar nosso site e fornecer suas informações, você reconhece ter lido, compreendido e concordado com os termos acima.
+
+                    Para quaisquer dúvidas ou preocupações sobre a coleta de dados, entre em contato conosco em [Inserir Endereço de Contato].
+
+                    Obrigado por escolher [Nome do Seu Site]!</p>

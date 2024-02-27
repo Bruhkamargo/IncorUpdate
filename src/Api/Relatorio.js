@@ -1,5 +1,5 @@
 import jsPDF from "jspdf";
-import Logo from './assets/LogoNome.png'
+import Logo from '../assets/LogoNome.png'
 
 export default async (name, data, img1, img2, TotalArray) => {
     // Create a new jsPDF instance
