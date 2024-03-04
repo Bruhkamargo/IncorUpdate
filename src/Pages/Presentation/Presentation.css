@@ -1,0 +1,83 @@
+#Presentation {
+    background-image: url(../src/assets/LogoNome.png);
+    background-repeat: no-repeat;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.LoginPresentation {
+    display: flex;
+    border: 1px solid black;
+    width: 40%;
+    height: 45%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 15px;
+    backdrop-filter: blur(3px);
+    box-shadow: 3px 4px 5px black;
+}
+
+.LoginPresentation span {
+    width: 60%;
+}
+.LoginPresentation span p {
+    font-weight: bold;
+}
+
+.InputPresentation {
+    border:none;
+    border-bottom: 1px solid;
+    width: 90%;
+    height: 25px;
+    padding-left: 5px;
+}
+
+.ButtonPresentation {
+    width: 70%;
+    height: 35px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/*grafico*/
+.DivGrafico {
+    display: flex;
+    border: 1px solid;
+    border-radius: 15px;
+    width: 90%;
+    height: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    backdrop-filter: blur(10px);
+}
+/*ToolTip do Grafico*/
+.custom-tooltip {
+    background-image: url(../src/assets/Logo.png);
+    background-color: ghostwhite;
+    background-position: center;
+    background-size: 270px;
+    border: 1px solid;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 3px 4px 5px black;
+    min-width: 200px;
+}
+
+.custom-tooltip h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(51, 21, 21);
+    text-shadow: 1px 2px 3px rgb(255, 253, 253);
+}
+
+.custom-tooltip p {
+    font-weight: bold;
+    color: black;
+    text-shadow: 1px 2px 3px rgb(255, 220, 220);
+}

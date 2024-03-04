@@ -1,16 +1,23 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import './App.css'
+import './Home.css'
 
 import Termos from '../Termos/Termos';
 
 import Logo from '../../assets/LogoNome.png'
 
 export default () => {
-    const baseUrl = 'https://incor-update.vercel.app';
-    // const baseUrl = 'http://localhost:3001';
+    const navigate = useNavigate();
+
+    const [StrName, SetStrName] = useState('');
+    const [StrEmail, SetStrEmail] = useState('');
+    const [StrPhone, SetStrPhone] = useState('');
+    const [StrID, SetStrID] = useState('')
+
+    // const baseUrl = 'https://incor-update.vercel.app';
+    const baseUrl = 'http://localhost:3001';
 
     const getTeste = async () => {
         const { data } = await axios.get(`${baseUrl}/teste`);
@@ -20,6 +27,25 @@ export default () => {
     useEffect(() => {
         getTeste()
     }, []);
+
+    /**
+     * Precisamos de mais validadores
+     * @param {*} e 
+     */
+    const SetUsers = async (e) => {
+        e.preventDefault()
+
+        if (!StrName || !StrEmail || !StrPhone) {
+            alert('Preencha os campos!');
+            return
+        }
+
+        let data = { Nome: StrName, Email: StrEmail, Telefone: StrPhone };
+        let { data: NewUser } = await axios.post(`${baseUrl}/setusers`, data);
+        SetStrID(`${NewUser.id}`);
+
+        navigate(`/App/${NewUser.id}/${StrName}`);
+    }
 
     const [ModalTermos, SetModalTermos] = useState(false);
 
@@ -43,20 +69,23 @@ export default () => {
 
             </header>
 
-            <div id='Teste' className='BodyHome'>
+            <div id='Avaliacao' className='BodyHome'>
                 <div className='Login'>
                     <span className='LoginLeft'>
                         <span className='SpanInput'>
                             <p>Nome: </p>
-                            <input type="text" name="Nome" className="InputLogin" />
+                            <input type="text" name="Nome" className="InputLogin" placeholder='Seu Nome Completo'
+                                value={StrName} onChange={(e) => { SetStrName(e.target.value) }} />
                         </span>
                         <span className='SpanInput'>
                             <p>Email: </p>
-                            <input type="email" name="Email" className="InputLogin" />
+                            <input type="email" name="Email" className="InputLogin" placeholder='Seu E-mail'
+                                value={StrEmail} onChange={(e) => { SetStrEmail(e.target.value) }} />
                         </span>
                         <span className='SpanInput'>
                             <p>Contato: </p>
-                            <input type="tel" name="Contato" className="InputLogin" />
+                            <input type="tel" name="Contato" className="InputLogin" placeholder='Seu numero de telefone'
+                                value={StrPhone} onChange={(e) => { SetStrPhone(e.target.value) }} />
                         </span>
 
                         <span className='CheckSpan'>
@@ -69,8 +98,8 @@ export default () => {
                                 <input type='checkbox'></input>
                             </span>
                         </span>
-                        <Link to={'/App'} className='LinkButton'>
-                            <button className='EntraButton'>Entrar</button>
+                        <Link to={`/App/${StrID}`} className='LinkButton' onClick={(e) => { SetUsers(e) }}>
+                            <button className='EntraButton' >Entrar</button>
                         </Link>
                     </span>
                     <span className='LoginRight'>
@@ -93,9 +122,10 @@ export default () => {
                     <a href="https://www.instagram.com/reab.incor_update/"> <i className="fab fa-instagram"></i> </a>
                     <a href="https://github.com/Bruhkamargo"> <i className="fab fa-github"></i> </a>
                     <a href="https://wa.me/5549998193608"> <i className="fab fa-whatsapp"></i> </a>
+                    <Link to={'/Apresentacao'} > <i className="fas fa-laptop-code"></i> </Link>
                 </div>
                 <p>Copyright By <a href='https://bruhkamargo.github.io/HealthTec'><span className='Health'>Health</span>&<span className='Tec'>Tec</span></a></p>
-            </footer>
+            </footer >
         </>
     )
 }

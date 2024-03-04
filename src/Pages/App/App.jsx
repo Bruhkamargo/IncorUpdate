@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react'
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
 import html2canvas from 'html2canvas';
+import { Link, useParams } from 'react-router-dom';
 
 import Relatorio from '../../Api/Relatorio';
+
+import GraficoTotal from './GraficoTotal';
+import GraficoDominios from './GraficoDominios';
 
 import Logo from '../../assets/LogoNome.png'
 import './App.css'
 
 function App() {
+
+  const { id, StrName } = useParams();
 
   const [Question01, SetQuestion01] = useState(0)
   const [Question02, SetQuestion02] = useState(0)
@@ -27,7 +32,7 @@ function App() {
   const [Question13, SetQuestion13] = useState(0)
   const [Question14, SetQuestion14] = useState(0)
 
-  const [StrName, SetStrName] = useState('')
+  const [StrNameAVA, SetStrNameAVA] = useState(StrName)
   const today = new Date();
 
   // Obtenha o ano, mês e dia
@@ -88,46 +93,10 @@ function App() {
     SetNumTotalRe(total);
   }, [Question13, Question14]);
 
-  const data = [
-    {
-      name: 'Atividade Física',
-      Max: 12,
-      Paciente: NumTotalAtvFis,
-    },
-    {
-      name: 'Nutrição',
-      Max: 12,
-      Paciente: NumTotalNut,
-    },
-    {
-      name: 'Álcool e Tabaco',
-      Max: 8,
-      Paciente: NumTotalAlCo,
-    },
-    {
-      name: 'Sono',
-      Max: 8,
-      Paciente: NumTotalSn,
-    },
-    {
-      name: 'Estresse',
-      Max: 8,
-      Paciente: NumTotalEs,
-    },
-    {
-      name: 'Relacionamentos',
-      Max: 8,
-      Paciente: NumTotalRe,
-    }
-  ];
+  useEffect(() => {
+    console.log(id);
+  }, [])
 
-  const dataTotal = [
-    {
-      name: "Estilo de Vida",
-      Maximo: 56,
-      Paciente: Number(NumTotal)
-    }
-  ];
 
   const exportAsImage = async () => {
     let grafico = document.getElementById('Grafico01')
@@ -149,7 +118,7 @@ function App() {
     var img1 = sessionStorage.getItem('imagem');
     var img2 = sessionStorage.getItem('imagem2');
     let TotalArray = [NumTotal, NumTotalAtvFis, NumTotalNut, NumTotalAlCo, NumTotalSn, NumTotalEs, NumTotalRe,]
-    Relatorio(StrName, StrDate, img1, img2, TotalArray);
+    Relatorio(StrNameAVA, StrDate, img1, img2, TotalArray);
   }
 
   return (
@@ -160,7 +129,7 @@ function App() {
         </span>
         <nav>
           <ul className='TopMenu'>
-            <li><a href='#Home'> Início </a></li>
+            <li><Link to={'/'}>Início</Link></li>
             <li><a href='#Avaliacao'> Avaliação </a></li>
             <li><a href='#Resultados'> Resultados </a></li>
             <li><a href='#Contato'> Contato </a></li>
@@ -991,7 +960,7 @@ function App() {
               <div className='DivResults'>
                 <span>
                   <p>Nome:</p>
-                  <input type="text" value={StrName} onChange={(e) => { SetStrName(e.target.value) }} className='ResultTextInput' />
+                  <input type="text" value={StrNameAVA} onChange={(e) => { SetStrNameAVA(e.target.value) }} className='ResultTextInput' />
                 </span>
                 <span>
                   <p>Data:</p>
@@ -1009,22 +978,7 @@ function App() {
                   <p>Paciente: <span>{NumTotal}</span></p>
                 </div>
                 <div id='Grafico01' className='Graficos'>
-                  <BarChart width={750} height={300} data={dataTotal}
-                    margin={{
-                      top: 5,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis domain={[0, 60]} interval={'preserveEnd'} />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="Maximo" fill="rgb(138, 3, 3)" activeBar={<Rectangle />} />
-                    <Bar dataKey="Paciente" fill="rgb(71, 74, 81)" activeBar={<Rectangle />} />
-                  </BarChart>
+                  <GraficoTotal NumTotal={NumTotal} />
                 </div>
               </div>
 
@@ -1040,25 +994,7 @@ function App() {
                 </div>
 
                 <div id='Grafico02' className='Graficos'>
-                  <BarChart
-                    width={750}
-                    height={300}
-                    data={data}
-                    margin={{
-                      top: 5,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis domain={[0, 15]} interval={'preserveEnd'} />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="Max" fill="rgb(138, 3, 3)" activeBar={<Rectangle />} />
-                    <Bar dataKey="Paciente" fill="rgb(71, 74, 81)" activeBar={<Rectangle />} />
-                  </BarChart>
+                  <GraficoDominios ArrayPrams={[NumTotalAtvFis, NumTotalNut, NumTotalAlCo, NumTotalSn, NumTotalEs, NumTotalRe]} />
                 </div>
 
               </div>
