@@ -4,11 +4,13 @@ import Grafico from './Grafico'
 
 import './Presentation.css'
 
+import LogoNome from "../../assets/LogoNome.png"
+
 export default () => {
     const [Results, SetResults] = useState(false)
 
     return (
-        <div id="Presentation">
+        <div id="Presentation" style={{backgroundImage:`url(${LogoNome})`}}>
             {Results ?
                 <div className='DivGrafico'>
                     <h1>Resultados!</h1>

@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import { ComposedChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Line } from 'recharts';
 
+import Logo from "../../assets/Logo.png"
+
 const ChartComponent = () => {
     const data = [
         {
@@ -48,7 +50,7 @@ const ChartComponent = () => {
 
         if (active && payload && payload.length) {
             return (
-                <div className="custom-tooltip">
+                <div className="custom-tooltip" style={{backgroundImage:`url(${Logo})`}}>
                     <h4 className="label">{`${label}`}</h4>
                     <p className="desc">{`Valor Máximo: ${payload[0].value[0]}`}</p>
                     <p className="desc">{`Valor Minimo: ${payload[0].value[1]}`}</p>
