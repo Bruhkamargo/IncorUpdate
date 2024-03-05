@@ -1,5 +1,5 @@
 #Presentation {
-    background-image: url(../src/assets/LogoNome.png);
+    background-image: url(./LogoNome.png);
     background-repeat: no-repeat;
     display: flex;
     height: 100%;
@@ -58,7 +58,7 @@
 }
 /*ToolTip do Grafico*/
 .custom-tooltip {
-    background-image: url(../src/assets/Logo.png);
+    background-image: url(./Logo.png);
     background-color: ghostwhite;
     background-position: center;
     background-size: 270px;
