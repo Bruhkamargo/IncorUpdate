@@ -16,8 +16,8 @@ export default () => {
     const [StrPhone, SetStrPhone] = useState('');
     const [StrID, SetStrID] = useState('')
 
-    // const baseUrl = 'https://incor-update.vercel.app';
-    const baseUrl = 'http://localhost:3001';
+    const baseUrl = 'https://incor-update.vercel.app';
+    // const baseUrl = 'http://localhost:3001';
 
     const getTeste = async () => {
         const { data } = await axios.get(`${baseUrl}/teste`);
