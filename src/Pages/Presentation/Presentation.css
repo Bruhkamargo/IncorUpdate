@@ -1,5 +1,4 @@
 #Presentation {
-    /* background-image: url(./LogoNome.png); */
     background-repeat: no-repeat;
     display: flex;
     height: 100%;
@@ -23,12 +22,14 @@
 .LoginPresentation span {
     width: 60%;
 }
+
 .LoginPresentation span p {
     font-weight: bold;
 }
 
 .InputPresentation {
-    border:none;
+    background-color: transparent;
+    border: none;
     border-bottom: 1px solid;
     width: 90%;
     height: 25px;
@@ -56,6 +57,7 @@
     justify-content: space-evenly;
     backdrop-filter: blur(10px);
 }
+
 /*ToolTip do Grafico*/
 .custom-tooltip {
     /* background-image: url(./Logo.png); */
@@ -80,4 +82,21 @@
     font-weight: bold;
     color: black;
     text-shadow: 1px 2px 3px rgb(255, 220, 220);
+}
+
+
+/*Responsividade*/
+
+@media screen and (max-width: 1000px) {
+    #Presentation {
+        background-position: center;
+    }
+
+    .LoginPresentation {
+        width: 90%;
+    }
+
+    .DivGrafico {
+        width: 95%;
+    }
 }

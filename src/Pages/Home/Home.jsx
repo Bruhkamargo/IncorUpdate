@@ -102,6 +102,7 @@ export default () => {
                             <button className='EntraButton' >Entrar</button>
                         </Link>
                     </span>
+                    <span className='Separator'></span>
                     <span className='LoginRight'>
                         <h2>Título</h2>
                         <p>Texto explicativo da proposta</p>
