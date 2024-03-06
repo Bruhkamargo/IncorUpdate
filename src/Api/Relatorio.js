@@ -1,6 +1,11 @@
 import jsPDF from "jspdf";
 import Logo from '../assets/LogoNome.png'
 
+
+/**
+ * @description
+ * 
+ */
 export default async (name, data, img1, img2, TotalArray) => {
     // Create a new jsPDF instance
     const pdfDoc = new jsPDF({ orientation: 'landscape' });

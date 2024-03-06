@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import html2canvas from 'html2canvas';
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 import Relatorio from '../../Api/Relatorio';
 
@@ -11,9 +12,12 @@ import Logo from '../../assets/LogoNome.png'
 import './App.css'
 
 function App() {
+  const baseUrl = 'https://incor-update.vercel.app';
+  // const baseUrl = 'http://192.168.3.50:3001';
 
-  const { id, StrName } = useParams();
+  const { id, StrName } = useParams(); // Parametros passados pelo Link
 
+  // Variaveis React
   const [Question01, SetQuestion01] = useState(0)
   const [Question02, SetQuestion02] = useState(0)
   const [Question03, SetQuestion03] = useState(0)
@@ -31,8 +35,8 @@ function App() {
   const [Question12, SetQuestion12] = useState(0)
   const [Question13, SetQuestion13] = useState(0)
   const [Question14, SetQuestion14] = useState(0)
-
   const [StrNameAVA, SetStrNameAVA] = useState(StrName)
+
   const today = new Date();
 
   // Obtenha o ano, mês e dia
@@ -41,16 +45,18 @@ function App() {
   const day = String(today.getDate()).padStart(2, '0'); // Adiciona zero à esquerda se for menor que 10
   const [StrDate, SetStrDate] = useState(`${year}-${month}-${day}`)
 
+  // Variaveis de Resultados
   const [NumTotal, SetNumTotal] = useState(0)
-  const [NumTotalAtvFis, SetNumTotalAtvFis] = useState(0)
-  const [NumTotalNut, SetNumTotalNut] = useState(0)
-  const [NumTotalAlCo, SetNumTotalAlCo] = useState(0)
-  const [NumTotalSn, SetNumTotalSn] = useState(0)
-  const [NumTotalEs, SetNumTotalEs] = useState(0)
-  const [NumTotalRe, SetNumTotalRe] = useState(0)
+  const [NumPhysicalActivity, SetNumPhysicalActivity] = useState(0)
+  const [NumNutrition, SetNumNutrition] = useState(0)
+  const [NumAddictions, SetNumAddictions] = useState(0)
+  const [NumSleep, SetNumSleep] = useState(0)
+  const [NumStress, SetNumStress] = useState(0)
+  const [NumRelationships, SetNumRelationships] = useState(0)
 
-  const [SaveButton, SetSaveButton] = useState(false);
+  const [SaveButton, SetSaveButton] = useState(false); // Para permitir salvar 1x o pdf
 
+  /** Use Effect */
   /**Total */
   useEffect(() => {
     let total = Number(Question01) + Number(Question02) + Number(Question03) + Number(Question04) + Number(Question05) + Number(Question06) + Number(Question07) + Number(Question08) + Number(Question09) + Number(Question10) + Number(Question11) + Number(Question12) + Number(Question13) + Number(Question14);
@@ -60,44 +66,50 @@ function App() {
   /**Atividade Física */
   useEffect(() => {
     let total = Number(Question01) + Number(Question02) + Number(Question03);
-    SetNumTotalAtvFis(total);
+    SetNumPhysicalActivity(total);
   }, [Question01, Question02, Question03]);
 
   /**Nutrição */
   useEffect(() => {
     let total = Number(Question04) + Number(Question05) + Number(Question06);
-    SetNumTotalNut(total);
+    SetNumNutrition(total);
   }, [Question04, Question05, Question06]);
 
   /**Álcool e Tabaco */
   useEffect(() => {
     let total = Number(Question07) + Number(Question08);
-    SetNumTotalAlCo(total);
+    SetNumAddictions(total);
   }, [Question07, Question08]);
 
   /**Sono */
   useEffect(() => {
     let total = Number(Question09) + Number(Question10);
-    SetNumTotalSn(total);
+    SetNumSleep(total);
   }, [Question09, Question10])
 
   /**Estresse */
   useEffect(() => {
     let total = Number(Question11) + Number(Question12);
-    SetNumTotalEs(total);
+    SetNumStress(total);
   }, [Question11, Question12]);
 
   /**Relacionamentos */
   useEffect(() => {
     let total = Number(Question13) + Number(Question14);
-    SetNumTotalRe(total);
+    SetNumRelationships(total);
   }, [Question13, Question14]);
 
-  useEffect(() => {
+  /**useEffect para teste */
+  /*useEffect(() => {
     console.log(id);
-  }, [])
+  }, []) <- array vazio faz com que essa função seja chamada ao carregar a pagina
+  */
 
+  /*Funções Internas */
 
+  /**
+   * @description Função para exportar a imagem dos graficos para o relatorio
+   */
   const exportAsImage = async () => {
     let grafico = document.getElementById('Grafico01')
     await html2canvas(grafico).then(
@@ -117,8 +129,36 @@ function App() {
     await exportAsImage();
     var img1 = sessionStorage.getItem('imagem');
     var img2 = sessionStorage.getItem('imagem2');
-    let TotalArray = [NumTotal, NumTotalAtvFis, NumTotalNut, NumTotalAlCo, NumTotalSn, NumTotalEs, NumTotalRe,]
+    let TotalArray = [NumTotal, NumPhysicalActivity, NumNutrition, NumAddictions, NumSleep, NumStress, NumRelationships,]
     Relatorio(StrNameAVA, StrDate, img1, img2, TotalArray);
+  }
+
+  const SaveAssessments = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (NumTotal == 0) {
+        alert('Realize a avaliação');
+        return;
+      };
+      let data = {
+        Total: NumTotal,
+        PhysicalActivity: NumPhysicalActivity,
+        Nutrition: NumNutrition,
+        Addictions: NumAddictions,
+        Sleep: NumSleep,
+        Stress: NumStress,
+        Relationships: NumRelationships
+      };
+      let response = await axios.post(`${baseUrl}/setassessments`, data);
+      if ( response.status == 200) {
+        SetSaveButton(true);
+        CallRelatorio();
+      };
+
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
   return (
@@ -967,7 +1007,8 @@ function App() {
                   <input type="date" value={StrDate} onChange={(e) => { SetStrDate(e.target.value) }} className='ResultTextInput' />
                 </span>
                 <span>
-                  <button className={SaveButton ? 'SaveButtonDisable' : 'SaveButton'} disabled={SaveButton} onClick={() => { CallRelatorio(); SetSaveButton(true); }}>Salvar</button>
+                  {/* <button className={SaveButton ? 'SaveButtonDisable' : 'SaveButton'} disabled={SaveButton} onClick={() => { CallRelatorio(); SetSaveButton(true); }}>Salvar</button> */}
+                  <button className={SaveButton ? 'SaveButtonDisable' : 'SaveButton'} disabled={SaveButton} onClick={(e) => { SaveAssessments(e); }}>Salvar</button>
                 </span>
               </div>
 
@@ -985,16 +1026,16 @@ function App() {
               <div className='DivResults'>
                 <div className='Pontos'>
                   <h3>Pontuação</h3>
-                  <p>Atividade Física: <span>{NumTotalAtvFis}</span>/12</p>
-                  <p>Nutrição: <span>{NumTotalNut}</span>/12</p>
-                  <p>Álcool e Tabaco: <span>{NumTotalAlCo}</span>/8</p>
-                  <p>Sono: <span>{NumTotalSn}</span>/8</p>
-                  <p>Estresse: <span>{NumTotalEs}</span>/8</p>
-                  <p>Relacionamentos: <span>{NumTotalRe}</span>/8</p>
+                  <p>Atividade Física: <span>{NumPhysicalActivity}</span>/12</p>
+                  <p>Nutrição: <span>{NumNutrition}</span>/12</p>
+                  <p>Álcool e Tabaco: <span>{NumAddictions}</span>/8</p>
+                  <p>Sono: <span>{NumSleep}</span>/8</p>
+                  <p>Estresse: <span>{NumStress}</span>/8</p>
+                  <p>Relacionamentos: <span>{NumRelationships}</span>/8</p>
                 </div>
 
                 <div id='Grafico02' className='Graficos'>
-                  <GraficoDominios ArrayPrams={[NumTotalAtvFis, NumTotalNut, NumTotalAlCo, NumTotalSn, NumTotalEs, NumTotalRe]} />
+                  <GraficoDominios ArrayPrams={[NumPhysicalActivity, NumNutrition, NumAddictions, NumSleep, NumStress, NumRelationships]} />
                 </div>
 
               </div>
